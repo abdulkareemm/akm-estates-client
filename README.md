@@ -1,0 +1,1 @@
+# akm-real-estate

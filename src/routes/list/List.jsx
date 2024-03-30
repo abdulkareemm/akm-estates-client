@@ -1,4 +1,4 @@
-import {Card, Filter} from "../../components";
+import {Card, Filter, Map} from "../../components";
 import "./list.scss"
 import { listData } from "../../lib/data";
 
@@ -14,7 +14,7 @@ const List = () => {
           ))}
         </div>
       </div>
-      <div className="mapContainer">{/* <Map items={data} /> */}</div>
+      <div className="mapContainer"><Map items={data} /></div>
     </div>
   );
 };

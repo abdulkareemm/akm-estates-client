@@ -19,8 +19,14 @@
         border: 1px solid gray;
         border-radius: 5px;
       }
+      .error{
+        font-size: 12px;
+        color: red;
+        padding: 0px 20px;
+      }
 
       button{
+        display: flex;
         padding: 20px;
         border-radius: 5px;
         border: none;
@@ -28,9 +34,10 @@
         color: white;
         font-weight: bold;
         cursor: pointer;
+        align-items: center;
+        justify-content: center;
 
         &:disabled{
-          background-color: #BED9D8;
           cursor: not-allowed;
         }
       }

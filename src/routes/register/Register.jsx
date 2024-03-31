@@ -5,13 +5,14 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { signupSchema } from "../../utils/validations";
 import axios from "axios";
 import { toast } from "react-toastify";
+import { ThreeDots } from "react-loader-spinner";
 
 const Register = () => {
   const navigate = useNavigate()
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isSubmitting },
   } = useForm({
     resolver: yupResolver(signupSchema),
   });
@@ -54,8 +55,22 @@ const Register = () => {
           {errors?.password?.message && (
             <p className="error">{errors?.password?.message}</p>
           )}
-
-          <button type="submit">Register</button>
+          <button disabled={isSubmitting} type="submit">
+            {isSubmitting ? (
+              <ThreeDots
+                visible={true}
+                height="15"
+                width="80"
+                color="#fff"
+                radius="6"
+                ariaLabel="three-dots-loading"
+                wrapperStyle={{}}
+                wrapperClass=""
+              />
+            ) : (
+              "Register"
+            )}
+          </button>
           <Link to="/login">Do you have an account?</Link>
         </form>
       </div>

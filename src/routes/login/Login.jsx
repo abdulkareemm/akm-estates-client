@@ -1,16 +1,71 @@
 import React from 'react'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import "./login.scss"
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { loginSchema } from "../../utils/validations";
+import axios from "axios";
+import { toast } from "react-toastify";
+import {ThreeDots} from "react-loader-spinner"
 
 const Login = () => {
+   const navigate = useNavigate();
+   const {
+     register,
+     handleSubmit,
+     formState: { errors, isSubmitting },
+   } = useForm({
+     resolver: yupResolver(loginSchema),
+   });
+   const Submit = async (data) => {
+     try {
+       const response = await axios.post(
+         "http://localhost:8000/api/v1/auth/login",
+         data
+       );
+       toast.success(response.data.message);
+       setTimeout(() => {
+         navigate("/");
+       }, 1000);
+     } catch (error) {
+       error?.response?.data?.message
+         ? toast.error(error?.response?.data?.message)
+         : toast.error("Something went wrong");
+     }
+   };
  return (
    <div className="login">
      <div className="formContainer">
-       <form>
+       <form onSubmit={handleSubmit(Submit)}>
          <h1>Welcome back</h1>
-         <input name="username" type="text" placeholder="Username" />
-         <input name="password" type="password" placeholder="Password" />
-         <button>Login</button>
+         <input {...register("username")} type="text" placeholder="Username" />
+         {errors?.username?.message && (
+           <p className="error">{errors?.username?.message}</p>
+         )}
+         <input
+           {...register("password")}
+           type="password"
+           placeholder="Password"
+         />
+         {errors?.password?.message && (
+           <p className="error">{errors?.password?.message}</p>
+         )}
+         <button disabled={isSubmitting} type="submit">
+           {isSubmitting ? (
+             <ThreeDots
+               visible={true}
+               height="15"
+               width="80"
+               color="#fff"
+               radius="6"
+               ariaLabel="three-dots-loading"
+               wrapperStyle={{}}
+               wrapperClass=""
+             />
+           ) : (
+             "Login"
+           )}
+         </button>
          <Link to="/register">{"Don't"} you have an account?</Link>
        </form>
      </div>

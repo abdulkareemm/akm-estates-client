@@ -26,6 +26,9 @@
       }
 
       button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
         padding: 20px;
         border-radius: 5px;
         border: none;
@@ -35,7 +38,6 @@
         cursor: pointer;
 
         &:disabled {
-          background-color: #bed9d8;
           cursor: not-allowed;
         }
       }

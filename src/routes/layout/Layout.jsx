@@ -1,6 +1,8 @@
 import "./layout.scss";
 import {Navbar} from "../../components";
 import { Outlet } from "react-router-dom";
+  import { ToastContainer } from "react-toastify";
+  import "react-toastify/dist/ReactToastify.css";
 
 const Layout = () => {
   return (
@@ -11,6 +13,7 @@ const Layout = () => {
       <div className="content">
         <Outlet />
       </div>
+      <ToastContainer position="bottom-left" autoClose={500} />
     </div>
   );
 };

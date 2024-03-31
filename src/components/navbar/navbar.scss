@@ -29,11 +29,10 @@ nav {
       font-size: 20px;
       display: flex;
       align-items: center;
-      color:#172c3c;
+      gap: 10px;
 
       img {
-        width: 80px;
-        height: 80px;
+        width: 28px;
       }
 
       span {
@@ -60,7 +59,7 @@ nav {
     }
 
     a {
-      padding: 12px 24px;
+      padding: 12px 24px ;
       margin: 20px;
     }
 
@@ -109,6 +108,7 @@ nav {
 
     .register {
       background-color: #fece51;
+      height: auto;
     }
 
     .menuIcon {

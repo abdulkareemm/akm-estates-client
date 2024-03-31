@@ -1,6 +1,6 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
-import { Home,Layout,List, Profile, SinglePage } from "./routes";
+import { Home,Layout,List, Login, Profile, Register, SinglePage } from "./routes";
 function App() {
   const router = createBrowserRouter([
     {
@@ -22,6 +22,14 @@ function App() {
         {
           path: "/profile",
           element: <Profile />,
+        },
+        {
+          path: "/login",
+          element: <Login />,
+        },
+        {
+          path: "/register",
+          element: <Register />,
         },
       ],
     },

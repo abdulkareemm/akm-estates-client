@@ -2,18 +2,18 @@ import { useState } from "react";
 import "./navbar.scss";
 import { Link } from "react-router-dom";
 
-import React from 'react'
+import React from "react";
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
 
-  const user = true;
+  const user = false;
   return (
     <nav>
       <div className="left">
         <a href="/" className="logo">
           <img src="/logo.png" alt="" />
-          <span>Estates</span>
+          <span>LamaEstate</span>
         </a>
         <a href="/">Home</a>
         <a href="/">About</a>
@@ -35,8 +35,8 @@ const Navbar = () => {
           </div>
         ) : (
           <>
-            <a href="/">Sign in</a>
-            <a href="/" className="register">
+            <a href="/login">Sign in</a>
+            <a href="/register" className="register">
               Sign up
             </a>
           </>
@@ -53,12 +53,12 @@ const Navbar = () => {
           <a href="/">About</a>
           <a href="/">Contact</a>
           <a href="/">Agents</a>
-          <a href="/">Sign in</a>
-          <a href="/">Sign up</a>
+          <a href="/login">Sign in</a>
+          <a href="/register">Sign up</a>
         </div>
       </div>
     </nav>
   );
-}
+};
 
-export default Navbar
+export default Navbar;

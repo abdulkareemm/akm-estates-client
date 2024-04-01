@@ -23,10 +23,9 @@ const Login = () => {
          "http://localhost:8000/api/v1/auth/login",
          data
        );
-       toast.success(response.data.message);
-       setTimeout(() => {
-         navigate("/");
-       }, 1000);
+       console.log(response)
+       localStorage.setItem("user",JSON.stringify(response.data))
+       navigate("/")
      } catch (error) {
        error?.response?.data?.message
          ? toast.error(error?.response?.data?.message)

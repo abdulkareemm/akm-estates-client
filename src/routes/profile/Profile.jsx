@@ -1,6 +1,6 @@
 import "./profile.scss"
 import {Chat,List} from "../../components"
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
@@ -27,7 +27,7 @@ const Profile = () => {
         <div className="wrapper">
           <div className="title">
             <h1>User Information</h1>
-            <button>Update Profile</button>
+            <Link to="/profile/update" className="link">Update Profile</Link>
           </div>
           <div className="info">
             <span>

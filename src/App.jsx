@@ -3,7 +3,7 @@ import {Layout,RequireAuth} from "./routes/layout/Layout"
 
 
 
-import { Home,List, Login, Profile, Register, SinglePage } from "./routes";
+import { Home,List, Login, Profile, Register, SinglePage, UpdateProfile } from "./routes";
 function App() {
   const router = createBrowserRouter([
     {
@@ -40,6 +40,10 @@ function App() {
         {
           path: "/profile",
           element: <Profile />,
+        },
+        {
+          path: "/profile/update",
+          element: <UpdateProfile />,
         },
       ],
     },

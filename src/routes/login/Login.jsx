@@ -23,7 +23,8 @@ const Login = () => {
      try {
        const response = await axios.post(
          "http://localhost:8000/api/v1/auth/login",
-         data
+         data,
+         { withCredentials: true }
        );
        console.log(response)
        localStorage.setItem("user",JSON.stringify(response.data))

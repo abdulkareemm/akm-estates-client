@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
 import "./login.scss"
 import { useForm } from "react-hook-form";
@@ -7,9 +7,11 @@ import { loginSchema } from "../../utils/validations";
 import axios from "axios";
 import { toast } from "react-toastify";
 import {ThreeDots} from "react-loader-spinner"
+import { AuthContext } from '../../context/AuthContext';
 
 const Login = () => {
    const navigate = useNavigate();
+   const {updateUser} = useContext(AuthContext)
    const {
      register,
      handleSubmit,
@@ -25,6 +27,7 @@ const Login = () => {
        );
        console.log(response)
        localStorage.setItem("user",JSON.stringify(response.data))
+       updateUser(response.data);
        navigate("/")
      } catch (error) {
        error?.response?.data?.message

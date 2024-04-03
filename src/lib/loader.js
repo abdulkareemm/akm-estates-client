@@ -2,14 +2,14 @@ import axios from "axios";
 import { defer } from "react-router-dom";
 
 export const singlePageLoader = async ({ request, params }) => {
-  const res = await axios("http://localhost:8000/api/v1/posts/" + params.id);
+  const res = await axios.get("http://localhost:8000/api/v1/posts/" + params.id);
   return res.data;
 };
 export const listPageLoader = async ({ request, params }) => {
   const query = request.url.split("?")[1];
-  const postPromise = axios("http://localhost:8000/api/v1/posts?" + query);
+  const postPromise = await axios.get("http://localhost:8000/api/v1/posts?" + query);
   return defer({
-    postResponse: postPromise,
+    postResponse: postPromise.data,
   });
 };
 

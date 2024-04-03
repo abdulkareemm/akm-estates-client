@@ -11,7 +11,7 @@ import {
   UpdateProfile,
   NewPost,
 } from "./routes";
-import { singlePageLoader } from "./lib/loader";
+import { listPageLoader, singlePageLoader } from "./lib/loader";
 function App() {
   const router = createBrowserRouter([
     {
@@ -25,6 +25,7 @@ function App() {
         {
           path: "/list",
           element: <List />,
+          loader:listPageLoader
         },
         {
           path: "/:id",

@@ -1,7 +1,5 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import {Layout,RequireAuth} from "./routes/layout/Layout"
-
-
+import { Layout, RequireAuth } from "./routes/layout/Layout";
 
 import {
   Home,
@@ -13,6 +11,7 @@ import {
   UpdateProfile,
   NewPost,
 } from "./routes";
+import { singlePageLoader } from "./lib/loader";
 function App() {
   const router = createBrowserRouter([
     {
@@ -30,6 +29,7 @@ function App() {
         {
           path: "/:id",
           element: <SinglePage />,
+          loader: singlePageLoader,
         },
 
         {
@@ -54,8 +54,7 @@ function App() {
           path: "/profile/update",
           element: <UpdateProfile />,
         },
-        {path:"/new-post",
-      element: <NewPost />}
+        { path: "/new-post", element: <NewPost /> },
       ],
     },
   ]);

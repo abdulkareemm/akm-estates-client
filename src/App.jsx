@@ -11,7 +11,7 @@ import {
   UpdateProfile,
   NewPost,
 } from "./routes";
-import { listPageLoader, singlePageLoader } from "./lib/loader";
+import { listPageLoader, profilePageLoader, singlePageLoader } from "./lib/loader";
 function App() {
   const router = createBrowserRouter([
     {
@@ -50,6 +50,7 @@ function App() {
         {
           path: "/profile",
           element: <Profile />,
+          loader:profilePageLoader
         },
         {
           path: "/profile/update",

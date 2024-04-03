@@ -1,16 +1,30 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import "./singlePage.scss";
 import { Map, Slider } from "../../components";
-import { singlePostData, userData } from "../../lib/data";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import DOMPurify from "dompurify";
+import { AuthContext } from "../../context/AuthContext";
+import axios from "axios";
 
 const SinglePage = () => {
   const post = useLoaderData();
-  let saved = false
-  const handleSave = ()=>{
+  const [saved, setSaved] = useState(post.isSaved);
+  const { currentUser } = useContext(AuthContext);
+  const navigate = useNavigate();
 
-  }
+  const handleSave = async () => {
+    if (!currentUser) {
+      navigate("/login");
+    }
+    setSaved((prev) => !prev);
+    try {
+      await axios.post("http://localhost:8000/api/v1/user/save", { postId: post.id },{withCredentials:true});
+    } catch (err) {
+      console.log(err);
+      setSaved((prev) => !prev);
+    }
+  };
+
   return (
     <div className="singlePage">
       <div className="details">

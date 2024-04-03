@@ -7,17 +7,18 @@ export const singlePageLoader = async ({ request, params }) => {
 };
 export const listPageLoader = async ({ request, params }) => {
   const query = request.url.split("?")[1];
-  const postPromise = await axios.get("http://localhost:8000/api/v1/posts?" + query);
+  const postPromise =  axios.get("http://localhost:8000/api/v1/posts?" + query);
   return defer({
-    postResponse: postPromise.data,
+    postResponse: postPromise,
   });
 };
 
 export const profilePageLoader = async () => {
-  const postPromise = axios("http://localhost:8000/api/v1/users/profilePosts");
-  const chatPromise = axios("http://localhost:8000/api/v1/chats");
+  const postPromise = axios.get("http://localhost:8000/api/v1/user/profilePosts",{withCredentials: true});
+//   const chatPromise = axios.get("http://localhost:8000/api/v1/chats");
+  
   return defer({
     postResponse: postPromise,
-    chatResponse: chatPromise,
+    // chatResponse: chatPromise,
   });
 };

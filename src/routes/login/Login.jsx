@@ -26,7 +26,6 @@ const Login = () => {
          data,
          { withCredentials: true }
        );
-       console.log(response)
        localStorage.setItem("user",JSON.stringify(response.data))
        updateUser(response.data);
        navigate("/")

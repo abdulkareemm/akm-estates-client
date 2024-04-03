@@ -3,7 +3,16 @@ import {Layout,RequireAuth} from "./routes/layout/Layout"
 
 
 
-import { Home,List, Login, Profile, Register, SinglePage, UpdateProfile } from "./routes";
+import {
+  Home,
+  List,
+  Login,
+  Profile,
+  Register,
+  SinglePage,
+  UpdateProfile,
+  NewPost,
+} from "./routes";
 function App() {
   const router = createBrowserRouter([
     {
@@ -45,6 +54,8 @@ function App() {
           path: "/profile/update",
           element: <UpdateProfile />,
         },
+        {path:"/new-post",
+      element: <NewPost />}
       ],
     },
   ]);

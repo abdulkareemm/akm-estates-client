@@ -27,15 +27,14 @@ const Profile = () => {
         <div className="wrapper">
           <div className="title">
             <h1>User Information</h1>
-            <Link to="/profile/update" className="link">Update Profile</Link>
+            <Link to="/profile/update" className="link">
+              <button>Update Profile</button>
+            </Link>
           </div>
           <div className="info">
             <span>
               Avatar:
-              <img
-                src={ currentUser.avatar || "/noavatar.avif"}
-                alt=""
-              />
+              <img src={currentUser.avatar || "/noavatar.avif"} alt="" />
             </span>
             <span>
               Username: <b>{currentUser.username}</b>
@@ -47,7 +46,9 @@ const Profile = () => {
           </div>
           <div className="title">
             <h1>My List</h1>
-            <button>Create New Post</button>
+            <button>
+              <Link to="/new-post">Create New Post</Link>
+            </button>
           </div>
           <List />
           <div className="title">
@@ -62,7 +63,7 @@ const Profile = () => {
         </div>
       </div>
     </div>
-  )
+  );
 }
 
 export default Profile
